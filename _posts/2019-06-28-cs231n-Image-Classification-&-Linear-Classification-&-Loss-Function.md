@@ -4,6 +4,7 @@ layout: post
 categories: cs231n
 tags:  cs231n
 author: Suikei Wong
+mathjax: true
 ---
 
 * content
@@ -155,5 +156,5 @@ So the step of Softmax classifier is:
 * normalize them between zero and one that sum to one, get the **probabilities**.
 * then use these probabilities to calculate the loss function and minimize the result.
 
-**MLE&MAP.** Minimizing the negative log likelihood of the correct class can also be interpreted as performing **Maximum Likelihood Estimation (MLE) **. We can also interpret the regularization term $$ R(W) $$ in the full loss function as coming from a Gaussian prior over the weight matrix $$ W $$, where we are performing the **Maximum a posteriori (MAP)** estimation. 
+**MLE&MAP.** Minimizing the negative log likelihood of the correct class can also be interpreted as performing **Maximum Likelihood Estimation (MLE)**. We can also interpret the regularization term $$ R(W) $$ in the full loss function as coming from a Gaussian prior over the weight matrix $$ W $$, where we are performing the **Maximum a posteriori (MAP)** estimation. 
 <br><br>
