@@ -5,6 +5,7 @@ categories: cs231n
 tags:  cs231n
 author: Suikei Wong
 mathjax: true
+excerpt_separator: <!--more-->
 ---
 
 * content
@@ -24,6 +25,8 @@ mathjax: true
 * **Evaluation:** Evaluate the quality of the classifer by asking it to predict labels for a new set of images that it has never seen before, and compare the true labels(*ground truth*) of these images to its results.
 
 <br><br>
+<!--more-->
+
 # Nearest Neighbor Classifier
 <br>This classifier has nothing to do with Convolutional Neural Networks(CNN), but it will allow us to get an idea about the basic approach to an image classification problem. It just memorize all data and labels during training and find the most similiar(nearest) one in prediction.
 <br><br>

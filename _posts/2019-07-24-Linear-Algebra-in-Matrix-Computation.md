@@ -5,6 +5,7 @@ categories: Matrix-Computation
 tags:  Matrix-Computation
 author: Suikei Wong
 mathjax: true
+excerpt_separator: <!--more-->
 ---
 
 * content
@@ -15,6 +16,7 @@ mathjax: true
 <br>
 **Unit Vector.** We represent the unit vectors by $$ \mathbf{e}_{j} \in \mathbb{C}^{n} $$ where the *j* th element of $$ \mathbf{e}_{j} $$ is 1 and all other elements are zero. $$ \mathbb{C} $$ represent the *Complex Number* since actually vectors are complex number. $$ n $$ represent the dimension of the vector space.
 <br>
+<!--more-->
 Unit vectors may be used to represent the axes of a Cartesian coordinate system. For instance, the unit vectors in the direction of the *x*, *y*, and *z* axes of a three dimensional Cartesian coordinate system are:<br>
 <center>$$ \hat{\mathbf{i}}=\left[\begin{array}{l}{1} \\ {0} \\ {0}\end{array}\right], \hat{\mathbf{j}}=\left[\begin{array}{l}{0} \\ {1} \\ {0}\end{array}\right], \hat{\mathbf{k}}=\left[\begin{array}{l}{0} \\ {0} \\ {1}\end{array}\right] $$</center>
 <br><br>
