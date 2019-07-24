@@ -129,7 +129,7 @@ The threshold at zero $$ \max (0,-) $$ function is often called the **hinge loss
 **Regularization.** In order to avoid overfitting, we introduce a **regularization penalty** $$ R(W) $$ to make it cannot fit the training data very well. We wish to encode some preference for a certain set of weights **W** over others to remove this ambiguity. So we extend the loss function with this **regularization penalty** $$ R(W) $$. The most common regularization penalty is the **L2** norm that discourages large weights through an elementwise quadratic penalty over all parameters:
 <center>$$ R(W)=\sum_{k} \sum_{l} W_{k, l}^{2} $$</center>
 
-It is **summing up all the squared elements of $$ W $$ **. Notice that the regularization function is not a function of the data, **it is only based on the weights**.
+It is **summing up all the squared elements of** $$ W $$ . Notice that the regularization function is not a function of the data, **it is only based on the weights**.
 <br><br>
 Now the loss function is made up of two components: the **data loss** and the **regularzation loss**, so the Multiple SVM loss becomes:
 <center>$$ L=\underbrace{\frac{1}{N} \sum_{i} L_{i}}_{\text { data loss }}+\underbrace{\lambda R(W)}_{\text { regularization loss }} $$</center>
