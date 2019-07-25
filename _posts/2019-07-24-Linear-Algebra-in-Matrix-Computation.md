@@ -90,7 +90,28 @@ The L-$$ \infty $$ norm is equivalent to the maximum absolute dimension in the d
 <br>
 For more information about the L1 and L2 distance in machine learning: [Nearest Neighbor Classifier](https://suikei-wong.github.io/2019/06/28/cs231n-Image-Classification-&-Linear-Classification-&-Loss-Function).
 <br><br>
-**Vector Norms.** If $$ \mathbf{x} $$ and $$ \mathbf{y} $$ are vectors, then $$ \|\cdot\| $$ is a vector norm if all of the following properties hold;
+**Vector Norms(L1,L2...are vector norms).** If $$ \mathbf{x} $$ and $$ \mathbf{y} $$ are vectors, then $$ \|\cdot\| $$ is a vector norm if all of the following properties hold($$ \alpha $$ is a scalar);
 * $$ \|\mathbf{x}\|>0 $$, if  $$ \mathbf{x} \neq 0 $$
 * $$ \|\alpha \mathbf{x}\|=| \alpha\| \| \mathbf{x} \| $$ 
 * $$ \|\mathbf{x}+\mathbf{y}\|\leq\|\mathbf{x}\|+\|\mathbf{y}\| $$
+<br><br>
+**Matrix Norms.** Given a vector norm $$ \|\mathbf{x}\| $$, we can define the corresponding *matrix norms* as follows:<br>
+<center>$$ \|\mathbf{A}\|=\max _{\|\mathbf{x}\| \neq 0} \frac{\|\mathbf{A} \mathbf{x}\|}{\|\mathbf{x}\|} $$</center>
+which are **subordinate** to the vector norms: a matrix norm is a vector norm in a vector space whose **elements (vectors) are matrices** (of given dimensions).<br>
+For the 1-norm and $$ \infty $$ -norm:<br>
+$$ \|\mathbf{A}\|_{1}=\max _{j} \sum_{i=1}^{n}\left|a_{i j}\right| $$ <br>
+**(column vector)**: sum up the absolute value of each element in the $$ j $$ th column and get the maximum.<br><br>
+$$ \|\mathbf{A}\|_{\infty}=\max _{i} \sum_{j=1}^{n}\left|a_{i j}\right| $$ <br>
+**(row vector)**: sum up the absolute value of each element in the $$ i $$ th row and get the maximum.<br><br>
+So if $$ \mathbf{A} $$ and $$ \mathbf{B} $$ are matrices, then $$ \|\cdot\| $$ is a matrix norm if all of the following properties hold($$ \alpha $$ is a scalar)(similar to the *vector norms*):<br>
+* $$ \|\mathbf{A}\|>0 $$, if $$ \mathbf{A}\neq 0 $$ 
+* $$ \|\alpha \mathbf{A}\|=|\alpha|\|\mathbf{A}\| $$
+* $$ \|\mathbf{A}+\mathbf{B}\| \leq\|\mathbf{A}\|+\|\mathbf{B}\| $$<br>
+
+As the subordinate matrix norms defined above, *matrix norms* also have the follwing additional properties:<br>
+* $$ \|\mathbf{A B}\| \leq\|\mathbf{A}\|\|\mathbf{B}\| $$
+* for any vector $$ \mathbf{x} $$, $$ \|\mathbf{A} \mathbf{x}\| \leq\|\mathbf{A}\|\|\mathbf{x}\| $$<br>
+
+Proof of this:<br>
+![proof](../assets/images/proof.png)
+
