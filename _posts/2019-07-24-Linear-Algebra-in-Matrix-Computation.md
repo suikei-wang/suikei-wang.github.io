@@ -92,7 +92,7 @@ For more information about the L1 and L2 distance in machine learning: [Nearest 
 <br><br>
 **Vector Norms(L1,L2...are vector norms).** If $$ \mathbf{x} $$ and $$ \mathbf{y} $$ are vectors, then $$ \|\cdot\| $$ is a vector norm if all of the following properties hold($$ \alpha $$ is a scalar);
 * $$ \|\mathbf{x}\|>0 $$, if  $$ \mathbf{x} \neq 0 $$
-* $$ \|\alpha \mathbf{x}\|=| \alpha\| \| \mathbf{x} \| $$ 
+* $$ \|\alpha\mathbf{x}\|=|\alpha\|\|\mathbf{x}\| $$ 
 * $$ \|\mathbf{x}+\mathbf{y}\|\leq\|\mathbf{x}\|+\|\mathbf{y}\| $$
 <br><br>
 **Matrix Norms.** Given a vector norm $$ \|\mathbf{x}\| $$, we can define the corresponding *matrix norms* as follows:<br>
@@ -105,13 +105,14 @@ $$ \|\mathbf{A}\|_{\infty}=\max _{i} \sum_{j=1}^{n}\left|a_{i j}\right| $$ <br>
 **(row vector)**: sum up the absolute value of each element in the $$ i $$ th row and get the maximum.<br><br>
 So if $$ \mathbf{A} $$ and $$ \mathbf{B} $$ are matrices, then $$ \|\cdot\| $$ is a matrix norm if all of the following properties hold($$ \alpha $$ is a scalar)(similar to the *vector norms*):<br>
 * $$ \|\mathbf{A}\|>0 $$, if $$ \mathbf{A}\neq 0 $$ 
-* $$ \|\alpha \mathbf{A}\|=|\alpha|\|\mathbf{A}\| $$
+* $$ \|\alpha\mathbf{A}\|=|\alpha|\|\mathbf{A}\| $$ 
 * $$ \|\mathbf{A}+\mathbf{B}\| \leq\|\mathbf{A}\|+\|\mathbf{B}\| $$<br>
 
-As the subordinate matrix norms defined above, *matrix norms* also have the follwing additional properties:<br>
-* $$ \|\mathbf{A B}\| \leq\|\mathbf{A}\|\|\mathbf{B}\| $$
+As the subordinate matrix norms defined above, *matrix norms* also have the follwing additional properties:
+
+* for matrices, $$ \|\mathbf{A B}\| \leq\|\mathbf{A}\|\|\mathbf{B}\| $$
 * for any vector $$ \mathbf{x} $$, $$ \|\mathbf{A} \mathbf{x}\| \leq\|\mathbf{A}\|\|\mathbf{x}\| $$<br>
 
 Proof of this:<br>
-![proof](../assets/images/proof.png)
+![proof](/assets/images/proof.png)
 
