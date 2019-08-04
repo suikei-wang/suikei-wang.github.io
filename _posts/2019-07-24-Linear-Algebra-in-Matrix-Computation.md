@@ -42,13 +42,31 @@ e.g.:<br>
 **Matrix Inverse.** Consider a matrix $$ \mathbf{A} \in \mathbb{C}^{n, n} $$, if there is a matrix $$ \mathbf{Z} \in \mathbb{C}^{n, n} $$ such that $$ \mathbf{A}\mathbf{Z} = \mathbf{I} \in \mathbb{C}^{n,n} $$ then $$ \mathbf{Z} $$ is the inverse of $$ \mathbf{A} $$ and is written as $$ \mathbf{A}^{-1} $$.
 <br>
 **Non-Singular.** A matrix $$ \mathbf{A} \in \mathbb{C}^{n, n} $$ is *non-singular* or *invertible* if there is a matrix $$ \mathbf{Z} \in \mathbb{C}^{n, n} $$ such that $$ \mathbf{A}\mathbf{Z} = \mathbf{I} \in \mathbb{C}^{n,n} $$. <br>
-Simply, ff the result of matrix multiplication of two matrix is a **identity matrix**, these two matrix are *invertible matrix*, and **non-singular matrix**.<br>
-If $$ \mathbf{A} $$ is non-singular then $$ \mathbf{A}^{-1} $$ exists and $$ \mathbf{A}x = b $$ **always has an unique solution** $$ x = \mathbf{A}^{-1}b $$.
+Simply, if the result of matrix multiplication of two matrix is a **identity matrix**, these two matrix are *invertible matrix*, and **non-singular matrix**.<br>
+If $$ \mathbf{A} $$ is non-singular then $$ \mathbf{A}^{-1} $$ exists and $$ \mathbf{A}x = b $$ **always has an unique solution** $$ x = \mathbf{A}^{-1}b $$.<br><br>
+Generally, we use **Gaussian Elimination** to calculate the inverse matrix. Write down the identity matrix as the *augmented matrix* of the original matrix, then use Gaussian elimination to bring the original matrix into reduced row-echelon form (identity matrix), and the desired inverse is given as its right-hand side.
 <br><br><br>
-# Singular Value vs Eigenvalue
+# Eigenvalue vs Singular Value 
 
 <br>
-building...
+**Eigenvalue and Eigenvector.** *Eigenvalue* is a special set of *scalars* associated with a linear system of equations (matrix equation). Each eigenvalue is paired with a corresponding so-called *eigenvector* (left and right). The definition of *eigenvalue* and *eigenvector* can be donated as:<br>
+<center>$$ A\mathbf{v}=\lambda \mathbf{v} $$</center><br>
+where $$ A $$ is a *n-by-n* matrix (square matrix), $$ \mathbf{v} $$ is a *n-by-1* matrix (column vector), which is also the ***eigenvector*** of square matrix $$ A $$. For some scalar $$ \lambda $$, $$ \lambda $$ is called the ***eigenvalue*** of $$ A $$ with corresponding (right) eigenvector $$ \mathbf{v} $$. That is, the eigenvectors are the vectors that the linear transformation $$ A $$ merely *elongates* or *shrinks* (its direction doesn't changed), and the *amount* that they elongate/shrink by is the ***eigenvalue***. <br>
+In the following image, vector $$ \mathbf{v} $$ is the **eigenvector** of $$ A $$, and the length of $$ A\mathbf{v} $$ is $$ \lambda $$ times $$ \mathbf{v} $$, where $$ \lambda $$ is the **eigenvalue**.<br>
+![eigen](/assets/images/eigen.png)
+
+The decomposition of a square matrix $$ A $$ into eigenvalues and eigenvectors is known in this work as **eigen decomposition**. From the definition of *eigenvalue* and *eigenvector*, it can be stated equivalently as:<br>
+<center>$$ (A-\lambda I) v=0 $$</center><br>
+where $$ I $$ is the *n*-by*n* identity matrix and 0 is the zero vector. In this equation, $$ |A-\lambda I| $$ is so called the eigen polynomial of $$ A $$. To get the *eigenvalue* and *eigenvector*, we just need to find the solution of the *determinant* of $$ A-\lambda I $$. The following image is an example:<br>
+![eigen](/assets/images/example_eigen.png)
+
+
+If matrix is a **diagonal matrix** (the entries outside the main diagonal are all zero), *the eigenvalues of a diagonal matrix are the diagonal elements themselves*, and each diagonal element corresponds to an eigenvector whose only non-zero component is in the same row as that diagonal element. Consider the matrix<br>
+$$ A=\left[\begin{array}{lll}{1} & {0} & {0} \\ {0} & {2} & {0} \\ {0} & {0} & {3}\end{array}\right] $$ <br>
+Each diagonal element corresponds to an eigenvector whose only non-zero component is in the same row as that diagonal element. So the eigenvalues correspond to the eigenvectors in $$ A $$,<br>
+$$ v_{\lambda_{1}}=\left[\begin{array}{l}{1} \\ {0} \\ {0}\end{array}\right], \quad v_{\lambda_{2}}=\left[\begin{array}{l}{0} \\ {1} \\ {0}\end{array}\right], \quad v_{\lambda_{3}}=\left[\begin{array}{l}{0} \\ {0} \\ {1}\end{array}\right] $$
+
+
 <br><br><br>
 # Linear Independence
 
@@ -95,6 +113,7 @@ For more information about the L1 and L2 distance in machine learning: [Nearest 
 * $$ \|\alpha\mathbf{x}\|=|\alpha\|\|\mathbf{x}\| $$ 
 * $$ \|\mathbf{x}+\mathbf{y}\|\leq\|\mathbf{x}\|+\|\mathbf{y}\| $$
 <br><br>
+
 **Matrix Norms.** Given a vector norm $$ \|\mathbf{x}\| $$, we can define the corresponding *matrix norms* as follows:<br>
 <center>$$ \|\mathbf{A}\|=\max _{\|\mathbf{x}\| \neq 0} \frac{\|\mathbf{A} \mathbf{x}\|}{\|\mathbf{x}\|} $$</center>
 which are **subordinate** to the vector norms: a matrix norm is a vector norm in a vector space whose **elements (vectors) are matrices** (of given dimensions).<br>
