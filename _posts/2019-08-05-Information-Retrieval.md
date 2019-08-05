@@ -179,4 +179,19 @@ Recall the dictionary data structures. It stores the term vocabulary, document f
 **Hashtables.** Each term is harshed to an integer, this way's lookup is faster than for a tree, but it's no easy way to find minor variants and no prefix search. If vocabulary keeps growing, need to occasionally do the expensive operation of rehashing everything.<br>
 **Tree.** Simplest: Binary tree. More usual: B-tree. Trees require a standard ordering of characters and hence strings. It can solves the prefix problem, but it's slower and reblancing it is expensive.<br><br>
 
-**Wild-card queries.**
+**Wild-card queries.** Use `*` as the wild-card queries to find words. E.g., `mon*` find all docs containing any word begining with `mon`. If we need to find words ending in `mon`, we need to maintain an additional B-tree for terms *backwards*. <br>
+**Query processing.** All terms in the dictionary that match the wild-card query and we still look up the postings for each enumerated term.<br>
+**Permuterm index.** If we need to handle `*'s` in the middle of query term, it's expensive to look up two sets in a B-tree and intersect the two term sets. **Permuterm index** transform wild-card queries:
+- E.g., for the term *hello*, index under: `hello$, ello$h, llo$he, lo$hel, o$hell, $hello`, where `$` is a special symbol.
+
+In **permuterm query processing**, it rotates query wild-card to the right, and uses B-tree lookup as before.<br><br>
+**Bigram (*k-gram*) indexes.** Enumerate all *k-grams* occurring in any term. Maintain a *second* inverted index *from bigrams to dictionary terms* that match each bigram. To processing wild-cards, e.g., query `mon*` can now be run as `$m AND mo AND on`. But it will enumerate some error, e.g., `moon`. So we must ***post-filter*** these terms against query. <br><br>
+**Spelling correction.** Correct documents being indexed and user queries to retrieve "right" answers.
+- Isolated word: check each word on its own for misspelling.
+- Context-sensitive: look at surrounding words.
+
+**Document correction.** Especially needed for OCR‘ed documents. But also in web pages and even printed material have typos. The goal of document correction is to make the dictionary contains fewer misspellings, but often we don't change the documents and instead **fix the query-document mapping**.<br>
+**Query mis-spellings.** We can retrieve documents indexed by the correct spelling, or return several suggested alternative queries with the correct spelling: e.g., *do you mean ...?*<br>
+**Isolated word correction.** *Fundamental premises:* there is a lexicon from which the correct spelling come: a standard lexicon and the lexicon of the indexed corpus (e.g., all words on the web). Given a lexicon and a character sequences Q, return the words in the lexicon closest to Q. How we define the closest? <br><br>
+**Edit distance.** Counting the number of operations that you convert one to the other: Given two strings $$ S_{1} $$ and $$ S_{2} $$. Operations are typically character-level like insert, delete, replace and transposition. <br>
+**Weighted edit distance.** Added **weight** to an operation. It's depends on the characters involved. E.g., replacing ***m*** by ***n*** is small edit distance since ***m*** is more likely to be mis-typed as ***n***. This method requires weight matrix as input and modify dynamic programming to handle weights. 
