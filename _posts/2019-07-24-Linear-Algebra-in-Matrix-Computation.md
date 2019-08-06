@@ -46,7 +46,7 @@ Simply, if the result of matrix multiplication of two matrix is a **identity mat
 If $$ \mathbf{A} $$ is non-singular then $$ \mathbf{A}^{-1} $$ exists and $$ \mathbf{A}x = b $$ **always has an unique solution** $$ x = \mathbf{A}^{-1}b $$.<br><br>
 Generally, we use **Gaussian Elimination** to calculate the inverse matrix. Write down the identity matrix as the *augmented matrix* of the original matrix, then use Gaussian elimination to bring the original matrix into reduced row-echelon form (identity matrix), and the desired inverse is given as its right-hand side.
 <br><br><br>
-# Eigenvalue vs Singular Value 
+# Eigenvalue and Eigenvector 
 
 <br>
 **Eigenvalue and Eigenvector.** *Eigenvalue* is a special set of *scalars* associated with a linear system of equations (matrix equation). Each eigenvalue is paired with a corresponding so-called *eigenvector* (left and right). The definition of *eigenvalue* and *eigenvector* can be donated as:<br>
@@ -80,8 +80,13 @@ A set of vectors that is **not** linearly dependent is called **linearly indepen
 # Range, Nullspace and Rank
 
 <br>
-building...
+**Range.** Consider $$ \mathbf{A} \in \mathbb{C}^{m,n} $$, the $$ range(\mathbf{A}) $$ is the set of vectors which can be express as $$ \mathbf{A}x $$ for some $$ x $$.<br>
+Also called the **column space ** of $$ \mathbf{A} $$. The **row space** of $$ \mathbf{A} $$ is the range of $$ \mathbf{A}^{*} $$. **0 is always in the range**. <br>
+$$ \mathbf{A} = [a_{1}, \cdots, a_{n}] $$, $$ \mathbf{A}x = \sum_{i=1}^{n} a_{i}x_{i} $$.<br>
+**Nullspace.** The nullspace of $$ \mathbf{A} \in \mathbb{C}^{m,n} $$, $$ null(\mathbf{A}) $$, is the set of vector $$ x $$ such that $$ \mathbf{A}x=0 $$. (The solution of $$ \mathbf{A}x=0 $$). <br>
+**Rank.** The rank of $$ \mathbf{A} \in \mathbb{C}^{m,n} $$ is the dimension of column space. $$ dim(nullspace(\mathbf{A})) + rank(\mathbf{A}) = n $$. 
 <br><br><br>
+
 # Norms
 
 <br>
@@ -127,6 +132,11 @@ So if $$ \mathbf{A} $$ and $$ \mathbf{B} $$ are matrices, then $$ \|\cdot\| $$ i
 * $$ \|\alpha\mathbf{A}\|=|\alpha|\|\mathbf{A}\| $$ 
 * $$ \|\mathbf{A}+\mathbf{B}\| \leq\|\mathbf{A}\|+\|\mathbf{B}\| $$<br>
 
+The calculation of matrix norm. Example:<br>
+![proof](/assets/images/matrix_norm.png)
+<br>
+
+
 As the subordinate matrix norms defined above, *matrix norms* also have the follwing additional properties:
 
 * for matrices, $$ \|\mathbf{A B}\| \leq\|\mathbf{A}\|\|\mathbf{B}\| $$
@@ -135,3 +145,55 @@ As the subordinate matrix norms defined above, *matrix norms* also have the foll
 Proof of this:<br>
 ![proof](/assets/images/proof.png)
 
+<br><br>
+**Orthogonal Vectors.** Vectors $$ x $$ and $$ y $$ are orthogonal if $$ x*y=0 $$. A set of vectors $$ \mathbf{S} $$ is orthogonal if $$ \forall x,y \in \mathbf{S},  x*y=0 $$. The set is orthonormal if it is orthogonal and $$ ||x||_{2} = 1 $$ for all $$ x \in \mathbf{S} $$. **The vectors in an orthogonal set are linearly independent.**<br>
+**Orthogonal Basis.** Any set of independent vectors $$ x_{1}, x_{2}, \cdots, x_{k} $$ can be converted into a set of orthogonal vectors $$ q_{1}, q_{2}, \cdots, q_{k} $$. First set $$ q_{1} = x_{1} $$, and then define $$ q_{i} $$ by:<br>
+<center>$$ q_{i}=x_{i}-\frac{q_{1}^{*} x_{i}}{q_{1}^{*} q_{1}} q_{1}-\cdots-\frac{q_{i-1}^{*} x_{i}}{q_{i-1}^{*} q_{i-1}} q_{i-1} $$</center><br>
+The subspace spanned by the original set of vectors $$ x_{1}, x_{2}, \cdots, x_{k} $$ is also spanned by $$ q_{1}, q_{2}, \cdots, q_{k} $$.<br><br>
+**Unitary Matrix.** A square matrix $$ \mathbf{Q} \in \mathcal{C}^{n, n} $$ is unitary (or orthogonal if $$ \mathbf{Q} \in \mathbb{R}^{n, n} $$) if $$ \mathbf{Q}^{*} \mathbf{Q}=\mathbf{I}\left(\text { or } \mathbf{Q}^{T} \mathbf{Q}=\mathbf{l}\right) $$. The important feature of unitary matrices is that they **preserve length**. (usually normalized to length 1)
+<br>
+<br>
+<br>
+
+# Singular Value Decomposition
+
+<br>
+
+Given $$ A \in \mathcal{C}^{m, n} $$ a singular value decomposition (SVD) of $$ A $$ is a factorization:<br>
+<center>$$ \mathbf{A}=\mathbf{U} \Sigma \mathbf{V}^{*} $$</center><br>
+where $$ \mathbf{U} \in \mathcal{C}^{m, m} $$ is unitary, $$ \mathbf{V} \in \mathcal{C}^{n, n} $$  is unitary and $$ \Sigma \in \mathcal{R}^{m, n} $$ is a diagonal matrix. The diagonal entries of $$ \Sigma $$ are $$ \sigma_{1} \geq \sigma_{2} \geq \cdots \geq \sigma_{p} \geq 0 $$, where $$ p=min(n,m) $$.<br>
+**The columns of $$ \mathbf{U} $$ are called the left singular vectors and the columns of $$ \mathbf{V} $$ are the right singular vectors. The diagonal entries of $$$ \Sigma $$ are the singular values of A.**<br><br>
+The target of SVD is to reduce the dimension of matrix and for faster calculation:<br>
+![proof](/assets/images/why_svd.png)<br>
+The calculation of SVD:<br>
+![proof](/assets/images/svd_1.png)<br>
+![proof](/assets/images/svd_2.png)<br>
+![proof](/assets/images/svd_3.png)<br>
+<br><br>
+**Rank of a Matrix Product.** 
+- $$ \operatorname{range}(\mathbf{A B}) \subseteq \operatorname{range}(\mathbf{A}) $$
+- $$ \operatorname{range}\left((\mathbf{A B})^{*}\right) \subseteq \operatorname{range}\left(\mathbf{B}^{*}\right) $$
+
+- $$ \operatorname{rank}(\mathbf{A B}) \leq \operatorname{rank}(\mathbf{A}) $$
+- $$ \operatorname{rank}\left((\mathbf{A B})^{*}\right) \leq \operatorname{rank}\left((\mathbf{B})^{*}\right) $$
+
+<br><br>
+**L2 Matrix Norm.** The matrix norm subordinate to the Euclidean vector norm is given by the largest singular value of the matrix. <br>
+Let $$ \mathbf{A} \in \mathcal{C}^{m, n} $$ and let r = number of non-zero singular values. <br>
+$$ \|\mathbf{A}\|_{2}=\sigma_{1} $$, and $$ \|\mathbf{A}\|_{F}=\sqrt{\sigma_{1}^{2}+\sigma_{2}^{2}+\cdots+\sigma_{r}^{2}} $$. <br>
+
+**Relation with eigenvalue.** The nonzero singular values of $$ A $$ are the square roots of the nonzero eigenvalues of $$ A^{*}A $$ or $$ AA^{*} $$. If $$ A=A^{*} $$, then the singular values of $$ A $$ are the absolute values of the eigenvalues of $$ A $$.
+<br><br><br>
+# Projectors
+
+<br>
+
+A projector is a square matrix $$ \mathbf{P} $$ that satisfies $$ \mathbf{P}^{2}=\mathbf{P} $$ <br>
+If $$ \mathbf{P x}=\mathbf{v} $$ for some $$ x \mathbf{x}$$, then $$ \mathbf{P} \mathbf{v}=\mathbf{P}^{2} \mathbf{x}=\mathbf{P}_{\mathbf{x}}=\mathbf{v} $$ <br>
+<br>
+**Complementary Projector.** $$ \mathbf{I} - \mathbf{P} $$ is the complementary projector to $$ \mathbf{P} $$.<br>
+$$ \operatorname{range}(\mathbf{P})=\operatorname{null}(\mathbf{I}-\mathbf{P}) $$<br><br>
+**Complementary Subspaces.** $$ \operatorname{null}(\mathbf{I}-\mathbf{P}) \cap \operatorname{null}(\mathbf{P})=\mathbf{0} $$.<br><br>
+**Orthogonal Projectors.** Orthogonal projectors projects onto a subspace $$ \mathcal{S}_{1} $$ along $$ \mathcal{S}_{2} $$ where $$ \mathcal{S}_{1} $$ and $$ \mathcal{S}_{2} $$ are orthogonal.<br>
+$$ \mathcal{S}_{1} $$ and $$ \mathcal{S}_{2} $$ are orthogonal if $$ x*y=0 $$ for all $$ x \in \mathcal{S}_{1} $$ and $$ y \in \mathcal{S}_{2} $$<br>
+A projector $$ \mathbf{P} $$ is an orthogonal projector **if and only if** $$ \mathbf{P} = \mathbf{P}^{*} $$
