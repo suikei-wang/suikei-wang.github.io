@@ -194,4 +194,16 @@ In **permuterm query processing**, it rotates query wild-card to the right, and 
 **Query mis-spellings.** We can retrieve documents indexed by the correct spelling, or return several suggested alternative queries with the correct spelling: e.g., *do you mean ...?*<br>
 **Isolated word correction.** *Fundamental premises:* there is a lexicon from which the correct spelling come: a standard lexicon and the lexicon of the indexed corpus (e.g., all words on the web). Given a lexicon and a character sequences Q, return the words in the lexicon closest to Q. How we define the closest? <br><br>
 **Edit distance.** Counting the number of operations that you convert one to the other: Given two strings $$ S_{1} $$ and $$ S_{2} $$. Operations are typically character-level like insert, delete, replace and transposition. <br>
-**Weighted edit distance.** Added **weight** to an operation. It's depends on the characters involved. E.g., replacing ***m*** by ***n*** is small edit distance since ***m*** is more likely to be mis-typed as ***n***. This method requires weight matrix as input and modify dynamic programming to handle weights. 
+**Weighted edit distance.** Added **weight** to an operation. It's depends on the characters involved. E.g., replacing ***m*** by ***n*** is small edit distance since ***m*** is more likely to be mis-typed as ***n***. This method requires weight matrix as input and modify dynamic programming to handle weights. <br>
+**Using edit distances.** Given query:
+- first **enumerate all character sequences** with a preset(weighted) edit distance
+- intersect this set with list of **"correct"** words
+- show terms you found to user as suggestions
+
+<br>
+**n-gram overlap.** We cannot compute its edit distance to every dictionary term since it's expensive and slow. We **cut** the set of candidate dictionary terms by using **n-gram overlap**
+- enumerate all the **n-grams** in the query string and lexicon
+- use **n-gram index**(wild-card search) to retrieve all lexicon terms matching any of the query n-grams
+- **threshold by number of matching n-grams** (e.g., weight by keyboard layout)
+
+
